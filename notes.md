@@ -155,3 +155,40 @@ See source file.
 ### More in
 * [Let vs. Where](http://wiki.haskell.org/Let_vs._Where);
 * [How to desugar Haskell code](http://www.haskellforall.com/2014/10/how-to-desugar-haskell-code.html).
+
+## Chapter 3
+### Strings
+Haskell has _Char_ type and strings are _type alias_ for an char list.
+
+### List
+The (:) operator, called _cons_, builds a list:
+
+    λ> 'f' : "arm"
+    "farm"
+    λ> 'F' : ""
+    "F"
+
+Elements:
+
+    λ> head "Farm"
+    'F'
+    λ> tail "Farm"
+    "arm"
+    λ> take 0 "Farm"
+    ""
+    λ> take 2 "Farm"
+    "Fa"
+    λ> drop 2 "Farm"
+    "rm"
+    λ> drop 15 "Farm"
+    ""
+    λ> "Farm" !! 0
+    'F'
+    λ> "Farm" !! 2
+    'r'
+    λ> head ""
+    *** Exception: Prelude.head: empty list
+    λ> "" !! 2
+    *** Exception: Prelude.!!: index too large
+
+## Chapter 4
