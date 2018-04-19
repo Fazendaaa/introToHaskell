@@ -192,3 +192,95 @@ Elements:
     *** Exception: Prelude.!!: index too large
 
 ## Chapter 4
+### Numeric Types
+Haskell does not use only one type, we need to be concerned with are:
+* Integral numbers:
+    * Int - Fixed range;
+    * Integer - Supports arbitrarily range of numbers.
+* Fractional:
+    * Float - Single precision, should not be used in business applications;
+    * Double - Double precision, twice bits as Float and it the Fractional default type;
+    * Rational - Represents the ratio of two integers;
+    * Scientific - Space efficient and almost arbitrary precision.
+
+All of this numeric datatypes have a typeclass named Num.
+
+__Most programs should use _Integer_, no _Int_!__ - unless performance makes a difference.
+
+### Comparing Values
+In Haskell the __!=__ equivalent is __/=__.
+
+Funny comparisons:
+
+    λ> 'a' < 'b'
+    True
+    λ> "Julie" > "Chris"
+    True
+    λ> ['a', 'b'] > ['b', 'a']
+    False
+
+### Conditionals
+Haskell have _if expressions_:
+
+    λ> if True then 1 else 0
+    1
+
+Unlike C lang and some "low-level" languages, Haskell only allows conditionals with Bool type. That means that the following C code:
+
+    int x = 0;
+
+    if (x) {
+        printf("if\n.");
+    } else {
+        printf("else\n.");
+    }
+
+Roughly "translated" to Haskell as:
+
+    λ> let x = 0
+    λ> if x then "if" else "else"
+    error
+
+The correct way is:
+
+    λ> let x = 0
+    λ> if 0 /= x then "if" else "else"
+    "else"
+
+### Tuples
+
+    λ> (,) 1 0
+    (1, 0)
+    λ> (,) 1 'a'
+    (1, 'a')
+    λ> (,) 1 "Farm"
+    (1, "Farm")
+
+> _"It's generally unwise to use tuples of an overly large size [...]. Most tuples you see will be ( , , , , ) (5-tuple) or smaller."_
+
+### Lists
+* Elements must be of same type;
+* The number of values isn't specified in the type.
+
+Examples:
+
+    λ> let l = [1, 2, 3]
+    λ> length l
+    3
+
+### Definitions
+* You cannot have a tuple with only one element, but there is a zero tuple called _unit_ or ();
+* _Data declarations_ define new datatypes and _always_ create a new type constructor, but may or may not create new data constructor;
+* _Arity_ is the number of arguments a function accepts.
+
+### Names and variables
+Haskell there are seven categories of entities that have names:
+* Functions;
+* Term-level variables;
+* Data constructors;
+* Type variables;
+* Type constructor;
+* Typeclasses;
+* Modules.
+
+## Chapter 5
