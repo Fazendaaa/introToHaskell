@@ -164,32 +164,32 @@ Haskell has _Char_ type and strings are _type alias_ for an char list.
 The (:) operator, called _cons_, builds a list:
 
     λ> 'f' : "arm"
-    "farm"
+       "farm"
     λ> 'F' : ""
-    "F"
+       "F"
 
 Elements:
 
     λ> head "Farm"
-    'F'
+       'F'
     λ> tail "Farm"
-    "arm"
+       "arm"
     λ> take 0 "Farm"
-    ""
+       ""
     λ> take 2 "Farm"
-    "Fa"
+       "Fa"
     λ> drop 2 "Farm"
-    "rm"
+       "rm"
     λ> drop 15 "Farm"
-    ""
+        ""
     λ> "Farm" !! 0
-    'F'
+       'F'
     λ> "Farm" !! 2
-    'r'
+       'r'
     λ> head ""
-    *** Exception: Prelude.head: empty list
+       *** Exception: Prelude.head: empty list
     λ> "" !! 2
-    *** Exception: Prelude.!!: index too large
+       *** Exception: Prelude.!!: index too large
 
 ## Chapter 4
 ### Numeric Types
@@ -213,11 +213,11 @@ In Haskell the __!=__ equivalent is __/=__.
 Funny comparisons:
 
     λ> 'a' < 'b'
-    True
+       True
     λ> "Julie" > "Chris"
-    True
+       True
     λ> ['a', 'b'] > ['b', 'a']
-    False
+       False
 
 ### Conditionals
 Haskell have _if expressions_:
@@ -239,22 +239,22 @@ Roughly "translated" to Haskell as:
 
     λ> let x = 0
     λ> if x then "if" else "else"
-    error
+       error
 
 The correct way is:
 
     λ> let x = 0
     λ> if 0 /= x then "if" else "else"
-    "else"
+       "else"
 
 ### Tuples
 
     λ> (,) 1 0
-    (1, 0)
+       (1, 0)
     λ> (,) 1 'a'
-    (1, 'a')
+       (1, 'a')
     λ> (,) 1 "Farm"
-    (1, "Farm")
+       (1, "Farm")
 
 > _"It's generally unwise to use tuples of an overly large size [...]. Most tuples you see will be ( , , , , ) (5-tuple) or smaller."_
 
@@ -266,7 +266,7 @@ Examples:
 
     λ> let l = [1, 2, 3]
     λ> length l
-    3
+       3
 
 ### Definitions
 * You cannot have a tuple with only one element, but there is a zero tuple called _unit_ or ();
@@ -284,3 +284,87 @@ Haskell there are seven categories of entities that have names:
 * Modules.
 
 ## Chapter 5
+### What are types for?
+* Improved lambda calculus called _[System F](https://crypto.stanford.edu/~blynn/lambda/systemf.html)_;
+* Since types are _static_ typechecking occurs at __compile time__.
+
+### Currying
+> _"As in the lambda calculus, arguments (plural) is a shorthand for the truth in Haskell: __all functions in Haskell take one argument and return on result.__"_
+
+Currying is about nesting multiple functions as each accept one parameter and return one result, allowing the illusion of multiple-parameter functions.
+
+### Partial application
+See source code for more.
+
+### Manual currying and uncurrying
+_Uncurrying_ means un-nesting the functions and replacing the two functions with a tuple of two values.
+
+### Currying and uncurrying existing functions
+
+    λ> let curry f a b = f (a, b)
+    λ> let uncurry f a b = f a b
+    λ> curry fst 1 2
+       1
+    λ> uncurry (+) 1 2
+       3
+
+### Sectioning
+Refers to partial application of infix operators:
+
+    λ> let x = 5
+    λ> let y = (2^)
+    λ> let z = (^2)
+    λ> y x
+       32
+    λ> x z
+       25
+
+### Polymorphism
+> _"Many forms"_
+
+obs: _polymorphic_ means "made of many forms".
+
+In Haskell, polymorphism divides into two categories:
+* parametric - refers to type variables/parameters that are fully polymorphic;
+* constrained (aka: 'ad-hoc') - puts a typeclass constraints on the variable, that way decreasing the number of types it could be, but increasing what you can do with it.
+
+_"[...] When you see a lowercase name in a type signature, it is a type variable and polymorphic."_
+
+    f :: Num a => a -> b -> Int -> NewOneType
+                 [0]  [1]   [2]    [3]
+
+0. Constrained polymorphic;
+1. Fully polymorphic;
+2. Concrete;
+3. Concrete.
+
+#### Working around constraints
+Remember?
+
+    λ> 6 / length [1, 2, 3]
+       error
+
+One way out:
+
+    λ> 6 / fromIntegral (length [1, 2, 3])
+       2.0
+
+### Type inference
+> _"Haskell's type inference is built on an extended version of the Damas-Hindley-Milner type system."_
+
+_Monomorphism restriction_: if any can be determined, top-level declarations by default will have a concrete type.
+
+### Definitions
+* "_Principal type_ is the most generic type which still typechecks";
+* "_Typeclass_ is a means of expressing faculties or interfaces that multiple datatypes may have in common";
+* "_Parametricity_ is the property that holds in the presence of parametric polymorphism";
+* Importing encode function from Data.Aeson module:
+    
+        import Data.Aeson (encode)
+
+### Follow-up resources
+* [Principal type-schemes for functional programs](https://fi.ort.edu.uy/innovaportal/file/20124/1/31-milner-damas.pdf);
+* [Fundamental Concepts in Programing Languages](https://link.springer.com/article/10.1023%2FA%3A1010000313106).
+
+## Chapter 6
+### Typeclasses
