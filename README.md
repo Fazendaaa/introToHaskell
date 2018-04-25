@@ -4,7 +4,7 @@
     <br>
     <br>
 
-[![Repository Logo](https://tinyurl.com/y8axexhz)](https://github.com/Fazendaaa/introToHaskell/)
+[![Repository Logo](https://github.com/Fazendaaa/introToHaskell/tree/master/logo/haskell.png)](https://github.com/Fazendaaa/introToHaskell/)
 
 
 <br>
