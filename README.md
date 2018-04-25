@@ -2,13 +2,20 @@
 
 <div align="center">
     <br>
-    <img src="https://www.haskell.org/static/img/haskell-logo.svg?etag=ukf3Fg7-" /img>
+    <br>
+    <img src="https://github.com/Fazendaaa/introToHaskell/tree/master/logo/haskell.svg" /img>
     <br>
     <br>
+    
+[![Haskell Badge](https://img.shields.io/badge/Haskell-%3C3-brightgreen.svg?longCache=true&style=for-the-badge)](https://haskell-lang.org/)
+
 </div>
 
 > Learning exercises in Haskell.
-Major notes are being taking from [Haskell book](http://haskellbook.com/).
 
 ## About
 Beginning the journey of learning Haskell, here are some of my process notes and exercises.
+
+Major notes are being taking from:
+* [Haskell book](http://haskellbook.com/);
+* [Parallel and Concurrent Programming in Haskell](http://shop.oreilly.com/product/0636920026365.do).
