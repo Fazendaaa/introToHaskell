@@ -3,9 +3,12 @@
 <div align="center">
     <br>
     <br>
-    <img src="https://github.com/Fazendaaa/introToHaskell/tree/master/logo/haskell.svg" /img>
-    <br>
-    <br>
+
+[![Repository Logo](https://tinyurl.com/y8axexhz)](https://github.com/Fazendaaa/introToHaskell/)
+
+
+<br>
+<br>
     
 [![Haskell Badge](https://img.shields.io/badge/Haskell-%3C3-brightgreen.svg?longCache=true&style=for-the-badge)](https://haskell-lang.org/)
 
