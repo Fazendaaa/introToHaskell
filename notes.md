@@ -368,3 +368,32 @@ _Monomorphism restriction_: if any can be determined, top-level declarations by 
 
 ## Chapter 6
 ### Typeclasses
+> _"Typeclasses and types in Haskell are, in a sense, opposites."_
+
+Typeclasses are similar to interfaces in some languages, can work in multiple datatypes.
+
+### Typeclass deriving
+Typeclass instances that can derive, with some constraints, are:
+* Eq;
+* Ord;
+* Enum;
+* Bounded;
+* Read;
+* Show.
+
+### Writing typeclass instances
+See source code Trivial.hs.
+
+"Unlike other languages, Haskell does not provide universal stringification (Show / print) or equality (Eq (value equality) or pointer equality) as this is not always sound safe, regardless of what programming language you're using."
+
+### Partial functions
+"Is one that doesn't handle all the possible cases, so there are possible scenarios in which we haven't defined any way for the code to evaluate."
+
+### Multiple Inheritance
+See "deadly diamond of death" [here](https://en.wikipedia.org/wiki/Multiple_inheritance).
+
+
+
+
+### Follow-up resources
+* [The Expression Problem](http://homepages.inf.ed.ac.uk/wadler/papers/expression/expression.txt);
