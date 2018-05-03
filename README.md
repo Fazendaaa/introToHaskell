@@ -5,6 +5,7 @@
 [![Repository Logo](https://raw.githubusercontent.com/Fazendaaa/introToHaskell/master/logo/haskell.png)](https://github.com/Fazendaaa/introToHaskell/)
 
 [![Haskell Badge](https://img.shields.io/badge/Haskell-%3C3-brightgreen.svg?longCache=true&style=for-the-badge)](https://haskell-lang.org/)
+[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg?longCache=true&style=for-the-badge)](https://saythanks.io/to/Fazendaaa)
 
 </div>
 

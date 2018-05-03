@@ -392,8 +392,32 @@ See source code Trivial.hs.
 ### Multiple Inheritance
 See "deadly diamond of death" [here](https://en.wikipedia.org/wiki/Multiple_inheritance).
 
+### Enum
 
+    λ> enumFromThenTo 1 10 100
+                     [0][1][2]
 
+The parameters are:
+
+0. start;
+1. step (optional);
+2. end.
+
+### Side effects
+Since Haskell is a pure functional programming language, this means that programs are written as functions and can be expressed exclusively in terms of a lambda calculus.
+
+Printing something in the screen or reading something from a terminal or even a file violates this principle, that's because it does something in a not "lambda calculus way" interacting with something that is outside of it's scope. But Haskell does that without involving anything to the pure lambda calculus and that's why it's called a purely functional programming language.
+
+### Typeclasses vs Concrete
+One thing about being explicit parametricity and typeclasses is that you mean what you want to do with your data, which means you are less likely to make a mistake.
+
+### Definitions
+* _Typeclass inheritance_: when a typeclass has a superclass;
+* _Instance_: how a typeclass should work given a type.
 
 ### Follow-up resources
 * [The Expression Problem](http://homepages.inf.ed.ac.uk/wadler/papers/expression/expression.txt);
+* [How to make ad-hoc polymorphism less ad hoc](https://cse.iitk.ac.in/users/karkare/courses/2010/cs653/Papers/ad-hoc-polymorphism.pdf);
+* [Type Classes in Haskell](http://ropas.snu.ac.kr/lib/dock/HaHaJoWa1996.pdf).
+
+## Chapter 7
