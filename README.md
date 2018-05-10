@@ -15,5 +15,8 @@
 Beginning the journey of learning Haskell, here are some of my process notes and exercises.
 
 Major notes are being taking from:
-* [Haskell book](http://haskellbook.com/);
-* [Parallel and Concurrent Programming in Haskell](http://shop.oreilly.com/product/0636920026365.do).
+1. [Haskell book](http://haskellbook.com/);
+2. [Real World Haskell](http://book.realworldhaskell.org/);
+3. [Parallel and Concurrent Programming in Haskell](http://shop.oreilly.com/product/0636920026365.do).
+
+The ordering matters because some notes that were taken of the previous book would be redundant if pasted in the next. And some of them I've read concurrently.
