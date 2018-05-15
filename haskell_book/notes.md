@@ -248,7 +248,6 @@ The correct way is:
        "else"
 
 ### Tuples
-
     λ> (,) 1 0
        (1, 0)
     λ> (,) 1 'a'
@@ -300,7 +299,6 @@ See source code for more.
 _Uncurrying_ means un-nesting the functions and replacing the two functions with a tuple of two values.
 
 ### Currying and uncurrying existing functions
-
     λ> let curry f a b = f (a, b)
     λ> let uncurry f a b = f a b
     λ> curry fst 1 2
@@ -393,7 +391,6 @@ See source code Trivial.hs.
 See "deadly diamond of death" [here](https://en.wikipedia.org/wiki/Multiple_inheritance).
 
 ### Enum
-
     λ> enumFromThenTo 1 10 100
                      [0][1][2]
 
@@ -421,3 +418,65 @@ One thing about being explicit parametricity and typeclasses is that you mean wh
 * [Type Classes in Haskell](http://ropas.snu.ac.kr/lib/dock/HaHaJoWa1996.pdf).
 
 ## Chapter 7
+### Func-y
+Haskell functions are first-class entities. In a nutshell that basically means:
+* You can pass and return functions;
+* You can make use of syntactic patters.
+
+_Shadowing_: when an argument suppress other with same declaration due to its scopes. That happens because Haskell is a lexically scoped language.
+
+### Anonymous functions
+    λ> (\x -> x * 3) 5
+    15
+    λ> (\x -> x * 3) 1
+    3
+
+### Pattern matching
+I hope that this example speaks for itself:
+
+    isItTwo :: Integer -> Bool
+    isItTwo 2 = True
+    isItTwo _ = False
+
+In the terminal:
+
+    λ> isItTwo 3
+    False
+    λ> isItTwo 2
+    True
+
+This looks like logic languages like Prolog.
+
+### Higher-Order Functions (HOFs)
+Functions that accepts functions as arguments and/or as return.
+
+### Guards
+_"If-then-else is not guards!"_
+
+    myAbs :: Integer -> Integer
+    myAbs x
+        | x < 0     = negate x
+        | otherwise = x
+
+The __|__ operator is called _pipe_.
+
+### Pointfree style
+Is a way of composing functions without specifying their arguments. And is good to remember that the composition are applied from right to left.
+
+### Chapter Definition
+* "_Currying_ is the process of transforming a function that takes multiple arguments into a series of function which each take one arguments and return one result.";
+* "[...] pattern matching is the act of checking a given sequence of tokens for the presence of the constituents of some pattern. [...] The patterns generally have the form of either sequences or tree structures." - [Wikipedia](https://en.wikipedia.org/wiki/Pattern_matching);
+* Composition => The function _g_ is applied to _x_, _f_ is applied to _g_'s results later on:
+
+        comp :: (b -> c) -> ((a -> b) -> (a -> c))
+        comp f g x = f (g x)
+
+### Follow-up resources
+* [Haskell's pattern matching](https://www.haskell.org/tutorial/patterns.html);
+* [The Implementation of Functional Programming Languages](https://www.microsoft.com/en-us/research/wp-content/uploads/1987/01/slpj-book-1987-small.pdf) - pages 53-103;
+* [Fundamental Concepts in Programming Languages](http://www.cs.cmu.edu/~crary/819-f09/Strachey67.pdf) - page 11;
+* [An Introduction to Pointfree Programing](http://di.uminho.pt/~jno/ps/iscalc_1.ps.gz);
+* [Point-free Program Calculation](http://www4.di.uminho.pt/~mac/Publications/phd.pdf).
+
+## Chapter 8
+### Recursion
