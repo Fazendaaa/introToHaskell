@@ -17,4 +17,20 @@ GHC: Glasgow Haskell Compiler
 In C is used the __!__ operator, in Haskell is __not__ operator.
 
 ## Chapter 2
-### Types and Functions
+### Types
+Haskell types:
+* Strong;
+* Static;
+* Can be inferred.
+
+Type coercing is need because Haskell won't do it automatically for you. From academic definitions: type strength is "how permissive" a type system is.
+
+### Functions
+_"Haskell doesn't have a __return__ keyword, because a function is a single expression, not a sequence of statements. The value of the expression is the result of the function."_
+
+### Why the fuss over purity?
+* _"[...] a pure function can only depend on its arguments [...]"_;
+* Makes abstraction more easy to understand.
+
+### Further reading
+* [Theorems fo free](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875).
