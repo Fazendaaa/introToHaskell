@@ -480,3 +480,10 @@ Is a way of composing functions without specifying their arguments. And is good 
 
 ## Chapter 8
 ### Recursion
+A total function is one function that handles all of its inputs.
+
+### Follow-up resources
+* [How to Succeed at Recursion Without Really Recursing](https://mvanier.livejournal.com/2897.html);
+
+## Chapter 9
+### Lists
