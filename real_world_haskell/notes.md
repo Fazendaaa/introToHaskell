@@ -34,3 +34,46 @@ _"Haskell doesn't have a __return__ keyword, because a function is a single expr
 
 ### Further reading
 * [Theorems fo free](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875).
+
+## Chapter 3
+### New Data Type
+* _Values constructor_ is also called _data constructor_;
+* _Components_ are the knew data types that the new one will be built upon;
+* _type_ keyword is kind like _typedef_ from C/C++;
+
+### Algebraic Data Types (ADT)
+Are those types that can have more than one value constructor, like the Bool type:
+
+    data Bool = False | True
+
+### Enumeration
+
+    data WeekDays = Sunday
+                  | Monday
+                  | Tuesday
+                  | Wednesday
+                  | Thursday
+                  | Friday
+                  | Saturday
+                  deriving (Eq, Show)
+
+### Reporting Errors
+
+    error :: String -> a
+
+_"It doesn't let our caller distinguish between a recoverable error and a problem so severe that it really should terminate our program."_
+
+### The offside Rule and Whitespace in an Expression
+_"Haskell uses indentation as cue to parse sections of code [...] the __offside rule__."_
+
+Even so, the indentation is not mandatory, you can use the { ... _code here_ ... } to avoid indentation rules.
+
+### A Few Notes
+* Data types with the _data_ keyword are algebraic ones;
+* The *_* (underscore) is called _wild card_;
+* _Isomorphic_ types: have the same shape;
+* -fwarn-incomplete-patterns;
+* -fwarn-name-shadowing.
+
+## Chapter 4
+### Functional Programming
