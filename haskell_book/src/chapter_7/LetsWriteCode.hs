@@ -9,7 +9,7 @@ module LetsWriteCode where
     foldBoolCase _ b _ = b
 
     foldBoolGuard :: a -> a -> Bool -> a
-    foldBoolGuard a b c = 
+    foldBoolGuard a b c
         | True  == c     = a
         | False == c     = b
 

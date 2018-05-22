@@ -487,3 +487,62 @@ A total function is one function that handles all of its inputs.
 
 ## Chapter 9
 ### Lists
+Using Maybe to return a tail:
+
+    λ> :info Maybe
+    data Maybe a = Nothing | Just a
+
+Code:
+  
+    safeTail :: [a] -> Maybe [a]
+    safeTail []      = Nothing
+    safeTail (x:[])  = Nothing
+    safeTail (_:xs)  = Just xs
+
+### List comprehensions
+
+    [ x^2 | x <- [1..10] ]
+    [ x^2 | x <- [1..10], 0 == rem x 2 ]
+    [ x^y | x <- [1..5], y <- [2, 3] ]
+
+Using _elem_:
+
+    λ> elem 'a' "Farm"
+    True
+    λ> elem 'b' "Farm"
+    False
+
+### Spines and nonstrict evaluation
+_"Because Haskell's evaluation is nonstrict, [...] nothing is evaluated until it must be."_
+
+            : <---------------------|
+           / \                      |
+          _   : <-------------------| This is the spine
+             / \                    |
+            _   : <-----------------|
+               / \
+              _   []
+
+Spines are nodes in trees structures and cons in lists.
+
+### Weak Head Normal Form (WHNF)
+Just read this chapter part, it will be more productive than resuming it.
+
+### Transforming lists of values
+_"A common mantra for performance sensitive code in Haskell is, __'lazy in the spine, strict in the leaves'__."_
+
+### Zipping lists
+
+    λ> zip [1, 2, 3] [10, 11, 12]
+    [(1, 10), (2, 11), (3, 12)]
+    λ> zipWith (+) [1, 2, 3] [10, 11, 12]
+    [11, 13, 15]
+    λ> unzip [(1, 10), (2, 11), (3, 12)]
+    [1, 2, 3] [10, 11, 12]
+
+### Follow-up resources
+* [Data-List](http://hackage.haskell.org/package/base/docs/Data-List.html);
+* [Ninety-nine Haskell problems](https://wiki.haskell.org/H-99:_Ninety-Nine_Haskell_Problems).
+
+## Chapter 10
+### Folding lists
