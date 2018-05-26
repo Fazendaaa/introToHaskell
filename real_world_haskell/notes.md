@@ -17,9 +17,9 @@ GHC: Glasgow Haskell Compiler
 In C is used the __!__ operator, in Haskell is __not__ operator.
 
 ## Chapter 2
-### Types
 Haskell types:
 * Strong;
+### Types
 * Static;
 * Can be inferred.
 
@@ -77,3 +77,79 @@ Even so, the indentation is not mandatory, you can use the { ... _code here_ ...
 
 ## Chapter 4
 ### Functional Programming
+In Arch Linux environment there's a fight between dependencies, so when compiling Haskell's files do it the following way if _--make_ isn't working for you:
+
+    $ ghc -dynamic fileName.hs
+
+I haven't found a package to do _unix2dos_ in Arch as others distros have it.
+
+### Infix Functions
+Backquotes, or backtick, are used to "infixing" prefix operators like:
+
+
+    λ> 1 `plus` 2
+    3
+    λ> plus 1 2
+    3
+### Lists
+_"If you need to determine whether a list is empty, use the __null__ function:"_
+
+    λ> null []
+    True
+    λ> null [1, 2, 3]
+    False
+    λ> null "Farm"
+    False
+
+### Partial and Total functions
+_"Functions that have only return values, defined for a subset of valid inputs are called partial functions (calling __error__ doesn't qualify as returning value!). Wee call functions that return valid results over their entire input domains total functions."_
+
+### What's the big deal about tail recursion?
+Read [Tail Call Optimization(TCO)](https://en.wikipedia.org/wiki/Tail_call).
+
+### The Left Fold
+
+    λ> foldl (+) 0 (1:2:3:[]) == (((0 + 1) + 2 ) + 3)
+    λ> foldr (+) 0 (1:2:3:[]) == (1 + (2 + (3 + (0)))
+
+More about [primitive recursion](https://en.wikipedia.org/wiki/Primitive_recursive_functional).
+
+Read the incredible explanation about why use __foldl'__ instead of __fold__. And to aid read [this](https://wiki.haskell.org/Foldr_Foldl_Foldl%27) as well.
+
+### Anonymous (lambda) Functions
+The only thing I can write is: _"there's no free lunch"_.
+
+Remember that to use anonymous functions your patterns should not be recursive in any way that uses a list or anything like it.
+
+## Currying
+_"Partial function application is named __currying__, after the logician Haskell Curry."_
+
+### Sections
+Partial application of functions are called _sections_:
+
+    λ> (1+) 2
+    3
+    λ> map (^2) [1, 2, 3, 4, 5]
+    [1, 4, 9, 26, 25]
+    λ> all (`elem` ['a'..'z']) "Farm"
+    False
+
+### As-patterns
+What the _tails_ function does?
+
+    λ> tails "Farm"
+    ["Farm", "arm", "rm", "m", ""]
+
+Writing this function _as-patterns_ returning nonempty suffixes:
+
+    suffixes :: [a] -> [a]
+    suffixes xs@(_:xs') = xs : suffixes xs'
+    suffixes _ = []
+
+The __@__ in this case means _"bind the variable xs to the value that matches the right side of the @ symbol"_.
+
+### Further Reading
+* [A tutorial on the universality and expressiveness of fold](http://www.cs.nott.ac.uk/~pszgmh/fold.pdf).
+
+## Chapter 5
+### Writing a Library
