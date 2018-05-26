@@ -121,7 +121,7 @@ The only thing I can write is: _"there's no free lunch"_.
 
 Remember that to use anonymous functions your patterns should not be recursive in any way that uses a list or anything like it.
 
-## Currying
+### Currying
 _"Partial function application is named __currying__, after the logician Haskell Curry."_
 
 ### Sections
