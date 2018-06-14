@@ -546,3 +546,66 @@ _"A common mantra for performance sensitive code in Haskell is, __'lazy in the s
 
 ## Chapter 10
 ### Folding lists
+Folds are called also as catamorphisms -- "means of deconstructing data".
+
+Folds happens in two stages:
+1. Transversal: recurses over the spine;
+2. Folding: evaluation or reduction of the values.
+
+Folds, different from maps, will throw exception upon undefined values because it evaluates all foldable values before run it, different from maps that does it upon the value:
+
+    λ> foldr (+) 0 [1, 2, undefined]
+    *** Exception: Prelude.undefined
+    λ> map (\x -> (+) 1 x) [1, 2, undefined]
+    [2,3,*** Exception: Prelude.undefined
+
+### Scanning lists
+_Scans_ are kind like folds but it returns all intermediate stages of the fold:
+
+    λ> foldr (+) 0 [1, 2, 3]
+    6
+    λ> scanr (+) 0 [1, 2, 3]
+    [6, 5, 3, 0]
+
+And scans are to the left as to the right, like folds.
+
+### Associativity and Folding
+They are not like "'potatoes', 'potatos'":
+
+    λ> foldr (^) 2 [1, 2, 3]
+    1
+    λ> foldl (^) 2 [1, 2, 3]
+    64
+
+### Unconditional spine recursion
+One of the differences between foldl and foldr is that the first one evaluates the bottom of the foldable before run it, and the second no.
+
+That's why it's better to use foldr in infinite lists, since all foldl non evaluated members will increase memory and performance. But, in cases there's need for a foldl use foldl' -- "fold-l-prime" -- instead.
+
+### Summary
+* Foldr:
+    * Works with infinite lists;
+    * Associates to the right;
+* Foldl:
+    * Cannot be used with infinite lists;
+    * Only tail-call after reaching the end of the list;
+
+### Scans
+Scans are not catamorphisms.
+
+Read the solution to the waterfall problem [here](https://chrisdone.com/posts/twitter-problem-loeb).
+
+Read the book implementation of a fibonacci with scanl -- note: there's a scanl' also.
+
+### Definitions
+* _Tail call_ is the final result of a function;
+* _Tail recursion_ is a function whose tail calls are recursive invocation of itself;
+
+### Follow-up resources
+* [Fold](https://wiki.haskell.org/Fold);
+* [Introduction to Functional Programming using Haskell](https://www.amazon.com/Introduction-Functional-Programming-using-Haskell/dp/0134843460) - Sections 4.5 and 4.6;
+* [Introduction to Haskell](http://www.cantab.net/users/antoni.diller/haskell/haskell.html);
+* [A tutorial on the universality and expressiveness of fold](http://www.cs.nott.ac.uk/~pszgmh/fold.pdf).
+
+## Chapter 11
+### Algebraic datatypes
